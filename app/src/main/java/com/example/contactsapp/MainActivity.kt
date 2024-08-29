@@ -9,14 +9,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -86,10 +83,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ContactsList(contacts: List<Contact>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
-        modifier = modifier
-            .verticalScroll(rememberScrollState())
-            .height(800.dp),
-        columns = GridCells.Fixed(3)
+        modifier = modifier,
+        columns = GridCells.Adaptive(120.dp)
     ) {
         items(contacts) {
             ContactItemUI(contact = it)
